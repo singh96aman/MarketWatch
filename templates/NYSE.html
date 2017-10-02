@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NASDAQ</title>
+
+    <meta name="description" content="Kite Coming Soon HTML Template by Jewel Theme" >
+	<meta name="author" content="Jewel Theme">
+
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+
+	<!-- Bootstrap  -->
+ <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}">
+
+	<!-- icon fonts font Awesome -->
+ <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/font-awesome.min.css') }}">
+
+	<!-- Custom Styles -->
+ <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/style.css') }}">
+
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/cover.css') }}">
+
+
+
+	<!--[if lt IE 9]>
+ <script src="{{url_for('static', filename='assets/js/html5shiv.js')}}"></script>
+	<![endif]-->
+</head>
+<body>
+<form method="post" action="">
+<!-- Page Top Sec -->
+	<section id="page-top" class="section-style" data-background-image="{{url_for('static', filename='images/background/page-signup.jpg')}}">
+		<div class="pattern height-resize">
+			<div class="container">
+			    <center><img src="{{ url_for('static', filename='images/Bizz1.png')}}" style="height: 275px ; width: 275px; align-content: center"></center>
+				<h2 class="section-title">
+					The WallStreet
+				</h2><!-- /.Section-title  -->
+                 <div id="time_countdown" class="time-count-container">
+                 <div>
+                    <table class="table table-bordered">
+                        <thead class="thead-inverse">
+                            <tr>
+                            <th><center><h4><b>Name</b></h4></center></th>
+                            <th><center><h4><b>Symbol</b></h4></center></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in companystock %}
+                            <tr>
+                            <td><h5><a href="/{{item.symbol}}">{{item.name}}</a></h5></td>
+                            <td><h5><a href="/{{item.symbol}}">{{item.symbol}}</a></h5></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <br>
+              <a href="/"><font style="color: #00ff80">Go Back To Your Portfolio</font></a>
+            <br>
+            <br>
+            <br>
+                 </div>
+        </div>
+    </section>
+</form>
+</body>
+</html>

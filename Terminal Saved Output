@@ -1,0 +1,488 @@
+Collecting MarkupSafe>=0.23 (from Jinja2>=2.4->flask)
+  Downloading MarkupSafe-1.0.tar.gz
+Building wheels for collected packages: itsdangerous, MarkupSafe
+  Running setup.py bdist_wheel for itsdangerous ... done
+  Stored in directory: /root/.cache/pip/wheels/fc/a8/66/24d655233c757e178d45dea2de22a04c6d92766abfb741129a
+  Running setup.py bdist_wheel for MarkupSafe ... done
+  Stored in directory: /root/.cache/pip/wheels/88/a7/30/e39a54a87bcbe25308fa3ca64e8ddc75d9b3e5afa21ee32d57
+Successfully built itsdangerous MarkupSafe
+Installing collected packages: gunicorn, itsdangerous, click, Werkzeug, MarkupSafe, Jinja2, flask
+Successfully installed Jinja2-2.9.6 MarkupSafe-1.0 Werkzeug-0.12.2 click-6.7 flask-0.12.2 gunicorn-19.7.1 itsdangerous-0.24
+(myprojectenv) root@MarketWatch:~/myproject# nano ~/myproject/myproject.py
+(myprojectenv) root@MarketWatch:~/myproject# sudo ufw allow 5000
+Rules updated
+Rules updated (v6)
+(myprojectenv) root@MarketWatch:~/myproject# python myproject.py
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+1.186.17.178 - - [01/Oct/2017 17:27:05] "GET / HTTP/1.1" 200 -
+1.186.17.178 - - [01/Oct/2017 17:27:05] "GET /favicon.ico HTTP/1.1" 404 -
+^C(myprojectenv) root@MarketWatch:~/myproject# clear
+
+(myprojectenv) root@MarketWatch:~/myproject# sudo apt-get install mysql-server
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following package was automatically installed and is no longer required:
+  grub-pc-bin
+Use 'sudo apt autoremove' to remove it.
+The following additional packages will be installed:
+  libaio1 libcgi-fast-perl libcgi-pm-perl libencode-locale-perl
+  libevent-core-2.0-5 libfcgi-perl libhtml-parser-perl libhtml-tagset-perl
+  libhtml-template-perl libhttp-date-perl libhttp-message-perl libio-html-perl
+  liblwp-mediatypes-perl libtimedate-perl liburi-perl mysql-client-5.7
+  mysql-client-core-5.7 mysql-common mysql-server-5.7 mysql-server-core-5.7
+Suggested packages:
+  libdata-dump-perl libipc-sharedcache-perl libwww-perl mailx tinyca
+The following NEW packages will be installed:
+  libaio1 libcgi-fast-perl libcgi-pm-perl libencode-locale-perl
+  libevent-core-2.0-5 libfcgi-perl libhtml-parser-perl libhtml-tagset-perl
+  libhtml-template-perl libhttp-date-perl libhttp-message-perl libio-html-perl
+  liblwp-mediatypes-perl libtimedate-perl liburi-perl mysql-client-5.7
+  mysql-client-core-5.7 mysql-common mysql-server mysql-server-5.7
+  mysql-server-core-5.7
+0 upgraded, 21 newly installed, 0 to remove and 34 not upgraded.
+Need to get 18.5 MB of archives.
+After this operation, 162 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://mirrors.digitalocean.com/ubuntu xenial-updates/main amd64 mysql-common all 5.7.19-0ubuntu0.16.04.1 [15.7 kB]
+Get:2 http://mirrors.digitalocean.com/ubuntu xenial/main amd64 libaio1 amd64 0.3.110-2 [6,356 B]
+Get:3 http://mirrors.digitalocean.com/ubuntu xenial-updates/main amd64 mysql-client-core-5.7 amd64 5.7.19-0ubuntu0.16.04.1 [6,020 kB]
+Get:4 http://mirrors.digitalocean.com/ubuntu xenial-updates/main amd64 mysql-client-5.7 amd64 5.7.19-0ubuntu0.16.04.1 [1,654 kB]
+Get:5 http://mirrors.digitalocean.com/ubuntu xenial-updates/main amd64 mysql-server-core-5.7 amd64 5.7.19-0ubuntu0.16.04.1 [7,588 kB]
+Get:6 http://mirrors.digitalocean.com/ubuntu xenial-updates/main amd64 libevent-core-2.0-5 amd64 2.0.21-stable-2ubuntu0.16.04.1 [70.6 kB]
+Get:7 http://mirrors.digitalocean.com/ubuntu xenial-updates/main amd64 mysql-server-5.7 amd64 5.7.19-0ubuntu0.16.04.1 [2,463 kB]
+Get:8 http://mirrors.digitalocean.com/ubuntu xenial/main amd64 libhtml-tagset-perl all 3.20-2 [13.5 kB]
+Get:9 http://mirrors.digitalocean.com/ubuntu xenial/main amd64 liburi-perl all 1.71-1 [76.9 kB]
+Get:10 http://mirrors.digitalocean.com/ubuntu xenial/main amd64 libhtml-parser-perl amd64 3.72-1 [86.1 kB]
+Get:11 http://mirrors.digitalocean.com/ubuntu xenial/main amd64 libcgi-pm-perl all 4.26-1 [185 kB]
+Get:12 http://mirrors.digitalocean.com/ubuntu xenial/main amd64 libfcgi-perl amd64 0.77-1build1 [32.3 kB]
+Get:13 http://mirrors.digitalocean.com/ubuntu xenial/main amd64 libcgi-fast-perl all 1:2.10-1 [10.2 kB]
+Get:14 http://mirrors.digitalocean.com/ubuntu xenial/main amd64 libencode-locale-perl all 1.05-1 [12.3 kB]
+Get:15 http://mirrors.digitalocean.com/ubuntu xenial/main amd64 libhtml-template-perl all 2.95-2 [60.4 kB]
+Get:16 http://mirrors.digitalocean.com/ubuntu xenial/main amd64 libtimedate-perl all 2.3000-2 [37.5 kB]
+Get:17 http://mirrors.digitalocean.com/ubuntu xenial/main amd64 libhttp-date-perl all 6.02-1 [10.4 kB]
+Get:18 http://mirrors.digitalocean.com/ubuntu xenial/main amd64 libio-html-perl all 1.001-1 [14.9 kB]
+Get:19 http://mirrors.digitalocean.com/ubuntu xenial/main amd64 liblwp-mediatypes-perl all 6.02-1 [21.7 kB]
+Get:20 http://mirrors.digitalocean.com/ubuntu xenial/main amd64 libhttp-message-perl all 6.11-1 [74.3 kB]
+Get:21 http://mirrors.digitalocean.com/ubuntu xenial-updates/main amd64 mysql-server all 5.7.19-0ubuntu0.16.04.1 [10.8 kB]
+Fetched 18.5 MB in 2s (8,750 kB/s)  
+Preconfiguring packages ...
+Selecting previously unselected package mysql-common.
+(Reading database ... 60798 files and directories currently installed.)
+Preparing to unpack .../mysql-common_5.7.19-0ubuntu0.16.04.1_all.deb ...
+Unpacking mysql-common (5.7.19-0ubuntu0.16.04.1) ...
+Selecting previously unselected package libaio1:amd64.
+Preparing to unpack .../libaio1_0.3.110-2_amd64.deb ...
+Unpacking libaio1:amd64 (0.3.110-2) ...
+Selecting previously unselected package mysql-client-core-5.7.
+Preparing to unpack .../mysql-client-core-5.7_5.7.19-0ubuntu0.16.04.1_amd64.deb ...
+Unpacking mysql-client-core-5.7 (5.7.19-0ubuntu0.16.04.1) ...
+Selecting previously unselected package mysql-client-5.7.
+Preparing to unpack .../mysql-client-5.7_5.7.19-0ubuntu0.16.04.1_amd64.deb ...
+Unpacking mysql-client-5.7 (5.7.19-0ubuntu0.16.04.1) ...
+Selecting previously unselected package mysql-server-core-5.7.
+Preparing to unpack .../mysql-server-core-5.7_5.7.19-0ubuntu0.16.04.1_amd64.deb ...
+Unpacking mysql-server-core-5.7 (5.7.19-0ubuntu0.16.04.1) ...
+Selecting previously unselected package libevent-core-2.0-5:amd64.
+Preparing to unpack .../libevent-core-2.0-5_2.0.21-stable-2ubuntu0.16.04.1_amd64.deb ...
+Unpacking libevent-core-2.0-5:amd64 (2.0.21-stable-2ubuntu0.16.04.1) ...
+Processing triggers for libc-bin (2.23-0ubuntu9) ...
+Processing triggers for man-db (2.7.5-1) ...
+Setting up mysql-common (5.7.19-0ubuntu0.16.04.1) ...
+update-alternatives: using /etc/mysql/my.cnf.fallback to provide /etc/mysql/my.cnf (my.cnf) in auto mode
+Selecting previously unselected package mysql-server-5.7.
+(Reading database ... 60966 files and directories currently installed.)
+Preparing to unpack .../mysql-server-5.7_5.7.19-0ubuntu0.16.04.1_amd64.deb ...
+Unpacking mysql-server-5.7 (5.7.19-0ubuntu0.16.04.1) ...
+Selecting previously unselected package libhtml-tagset-perl.
+Preparing to unpack .../libhtml-tagset-perl_3.20-2_all.deb ...
+Unpacking libhtml-tagset-perl (3.20-2) ...
+Selecting previously unselected package liburi-perl.
+Preparing to unpack .../liburi-perl_1.71-1_all.deb ...
+Unpacking liburi-perl (1.71-1) ...
+Selecting previously unselected package libhtml-parser-perl.
+Preparing to unpack .../libhtml-parser-perl_3.72-1_amd64.deb ...
+Unpacking libhtml-parser-perl (3.72-1) ...
+Selecting previously unselected package libcgi-pm-perl.
+Preparing to unpack .../libcgi-pm-perl_4.26-1_all.deb ...
+Unpacking libcgi-pm-perl (4.26-1) ...
+Selecting previously unselected package libfcgi-perl.
+Preparing to unpack .../libfcgi-perl_0.77-1build1_amd64.deb ...
+Unpacking libfcgi-perl (0.77-1build1) ...
+Selecting previously unselected package libcgi-fast-perl.
+Preparing to unpack .../libcgi-fast-perl_1%3a2.10-1_all.deb ...
+Unpacking libcgi-fast-perl (1:2.10-1) ...
+Selecting previously unselected package libencode-locale-perl.
+Preparing to unpack .../libencode-locale-perl_1.05-1_all.deb ...
+Unpacking libencode-locale-perl (1.05-1) ...
+Selecting previously unselected package libhtml-template-perl.
+Preparing to unpack .../libhtml-template-perl_2.95-2_all.deb ...
+Unpacking libhtml-template-perl (2.95-2) ...
+Selecting previously unselected package libtimedate-perl.
+Preparing to unpack .../libtimedate-perl_2.3000-2_all.deb ...
+Unpacking libtimedate-perl (2.3000-2) ...
+Selecting previously unselected package libhttp-date-perl.
+Preparing to unpack .../libhttp-date-perl_6.02-1_all.deb ...
+Unpacking libhttp-date-perl (6.02-1) ...
+Selecting previously unselected package libio-html-perl.
+Preparing to unpack .../libio-html-perl_1.001-1_all.deb ...
+Unpacking libio-html-perl (1.001-1) ...
+Selecting previously unselected package liblwp-mediatypes-perl.
+Preparing to unpack .../liblwp-mediatypes-perl_6.02-1_all.deb ...
+Unpacking liblwp-mediatypes-perl (6.02-1) ...
+Selecting previously unselected package libhttp-message-perl.
+Preparing to unpack .../libhttp-message-perl_6.11-1_all.deb ...
+Unpacking libhttp-message-perl (6.11-1) ...
+Selecting previously unselected package mysql-server.
+Preparing to unpack .../mysql-server_5.7.19-0ubuntu0.16.04.1_all.deb ...
+Unpacking mysql-server (5.7.19-0ubuntu0.16.04.1) ...
+Processing triggers for man-db (2.7.5-1) ...
+Processing triggers for ureadahead (0.100.0-19) ...
+Processing triggers for systemd (229-4ubuntu19) ...
+Setting up libaio1:amd64 (0.3.110-2) ...
+Setting up mysql-client-core-5.7 (5.7.19-0ubuntu0.16.04.1) ...
+Setting up mysql-client-5.7 (5.7.19-0ubuntu0.16.04.1) ...
+Setting up mysql-server-core-5.7 (5.7.19-0ubuntu0.16.04.1) ...
+Setting up libevent-core-2.0-5:amd64 (2.0.21-stable-2ubuntu0.16.04.1) ...
+Setting up mysql-server-5.7 (5.7.19-0ubuntu0.16.04.1) ...
+update-alternatives: using /etc/mysql/mysql.cnf to provide /etc/mysql/my.cnf (my.cnf) in auto mode
+Renaming removed key_buffer and myisam-recover options (if present)
+Setting up libhtml-tagset-perl (3.20-2) ...
+Setting up liburi-perl (1.71-1) ...
+Setting up libhtml-parser-perl (3.72-1) ...
+Setting up libcgi-pm-perl (4.26-1) ...
+Setting up libfcgi-perl (0.77-1build1) ...
+Setting up libcgi-fast-perl (1:2.10-1) ...
+Setting up libencode-locale-perl (1.05-1) ...
+Setting up libhtml-template-perl (2.95-2) ...
+Setting up libtimedate-perl (2.3000-2) ...
+Setting up libhttp-date-perl (6.02-1) ...
+Setting up libio-html-perl (1.001-1) ...
+Setting up liblwp-mediatypes-perl (6.02-1) ...
+Setting up libhttp-message-perl (6.11-1) ...
+Setting up mysql-server (5.7.19-0ubuntu0.16.04.1) ...
+Processing triggers for libc-bin (2.23-0ubuntu9) ...
+Processing triggers for systemd (229-4ubuntu19) ...
+Processing triggers for ureadahead (0.100.0-19) ...
+(myprojectenv) root@MarketWatch:~/myproject# mysql_secure_installation
+
+Securing the MySQL server deployment.
+
+Enter password for user root: 
+
+VALIDATE PASSWORD PLUGIN can be used to test passwords
+and improve security. It checks the strength of password
+and allows the users to set only those passwords which are
+secure enough. Would you like to setup VALIDATE PASSWORD plugin?
+
+Press y|Y for Yes, any other key for No: y
+
+There are three levels of password validation policy:
+
+LOW    Length >= 8
+MEDIUM Length >= 8, numeric, mixed case, and special characters
+STRONG Length >= 8, numeric, mixed case, special characters and dictionary                  file
+
+Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG: 0
+Using existing password for root.
+
+Estimated strength of the password: 50 
+Change the password for root ? ((Press y|Y for Yes, any other key for No) : n
+
+ ... skipping.
+By default, a MySQL installation has an anonymous user,
+allowing anyone to log into MySQL without having to have
+a user account created for them. This is intended only for
+testing, and to make the installation go a bit smoother.
+You should remove them before moving into a production
+environment.
+
+Remove anonymous users? (Press y|Y for Yes, any other key for No) : n
+
+ ... skipping.
+
+
+Normally, root should only be allowed to connect from
+'localhost'. This ensures that someone cannot guess at
+the root password from the network.
+
+Disallow root login remotely? (Press y|Y for Yes, any other key for No) : n
+
+ ... skipping.
+By default, MySQL comes with a database named 'test' that
+anyone can access. This is also intended only for testing,
+and should be removed before moving into a production
+environment.
+
+
+Remove test database and access to it? (Press y|Y for Yes, any other key for No) : n
+
+ ... skipping.
+Reloading the privilege tables will ensure that all changes
+made so far will take effect immediately.
+
+Reload privilege tables now? (Press y|Y for Yes, any other key for No) : n
+
+ ... skipping.
+All done! 
+(myprojectenv) root@MarketWatch:~/myproject# 
+(myprojectenv) root@MarketWatch:~/myproject# 
+(myprojectenv) root@MarketWatch:~/myproject# mysql_secure_installation
+
+Securing the MySQL server deployment.
+
+Enter password for user root: 
+The 'validate_password' plugin is installed on the server.
+The subsequent steps will run with the existing configuration
+of the plugin.
+Using existing password for root.
+
+Estimated strength of the password: 50 
+Change the password for root ? ((Press y|Y for Yes, any other key for No) : 
+
+ ... skipping.
+By default, a MySQL installation has an anonymous user,
+allowing anyone to log into MySQL without having to have
+a user account created for them. This is intended only for
+testing, and to make the installation go a bit smoother.
+You should remove them before moving into a production
+environment.
+
+Remove anonymous users? (Press y|Y for Yes, any other key for No) : 
+
+ ... skipping.
+
+
+Normally, root should only be allowed to connect from
+'localhost'. This ensures that someone cannot guess at
+the root password from the network.
+
+Disallow root login remotely? (Press y|Y for Yes, any other key for No) : 
+
+ ... skipping.
+By default, MySQL comes with a database named 'test' that
+anyone can access. This is also intended only for testing,
+and should be removed before moving into a production
+environment.
+
+
+Remove test database and access to it? (Press y|Y for Yes, any other key for No) : 
+
+ ... skipping.
+Reloading the privilege tables will ensure that all changes
+made so far will take effect immediately.
+
+Reload privilege tables now? (Press y|Y for Yes, any other key for No) : 
+
+ ... skipping.
+All done! 
+(myprojectenv) root@MarketWatch:~/myproject# 
+(myprojectenv) root@MarketWatch:~/myproject# ./mysql -u root -p
+-bash: ./mysql: No such file or directory
+(myprojectenv) root@MarketWatch:~/myproject# ./mysql
+-bash: ./mysql: No such file or directory
+(myprojectenv) root@MarketWatch:~/myproject# mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 5.7.19-0ubuntu0.16.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database login;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use login;
+Database changed
+mysql> 
+mysql> create table user(
+    -> id int(6) auto_increment not null primary key,
+    -> username varchar(40),
+    -> password varchar(40),
+    -> stock varchar(160),
+    -> purse numeric(6) default 10000
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table stock(
+    -> name varchar(40),
+    -> stock varchar(40)
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> 
+mysql> 
+mysql> insert into stock values ("0","1");
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into stock values ("0","2");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stock values ("0","3");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stock values ("0","4");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stock values ("0","5");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stock values ("0","6");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stock values ("0","7");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into stock values ("0","8");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stock values ("0","9");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stock values ("0","10");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stock values ("0","11");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stock values ("0","12");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stock values ("0","13");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stock values ("0","14");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stock values ("0","15");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stock values ("0","16");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stock values ("0","17");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stock values ("0","18");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stock values ("0","19");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stock values ("0","20");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stock values ("0","21");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stock values ("0","22");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stock values ("0","23");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stock values ("0","24");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stock values ("0","25");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stock values ("0","26");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into stock values ("0","27");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stock values ("0","28");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stock values ("0","29");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stock values ("0","30");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stock values ("0","31");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stock values ("0","32");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stock values ("0","33");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> quit()
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'quit()' at line 1
+mysql> quit
+Bye
+(myprojectenv) root@MarketWatch:~/myproject# 
+(myprojectenv) root@MarketWatch:~/myproject# 
+(myprojectenv) root@MarketWatch:~/myproject# ls
+myprojectenv  myproject.py
+(myprojectenv) root@MarketWatch:~/myproject# nano requirements.txt
+(myprojectenv) root@MarketWatch:~/myproject# ls
+myprojectenv  myproject.py  requirements.txt
+(myprojectenv) root@MarketWatch:~/myproject# pip install -r requirements.txt
+Requirement already satisfied: Flask==0.12.2 in ./myprojectenv/lib/python2.7/site-packages (from -r requirements.txt (line 1))
+Collecting Flask-MySQL==1.4.0 (from -r requirements.txt (line 2))
+  Downloading Flask_MySQL-1.4.0-py2.py3-none-any.whl
+Collecting idna==2.6 (from -r requirements.txt (line 3))
+  Downloading idna-2.6-py2.py3-none-any.whl (56kB)
+    100% |████████████████████████████████| 61kB 737kB/s 
+Requirement already satisfied: itsdangerous==0.24 in ./myprojectenv/lib/python2.7/site-packages (from -r requirements.txt (line 4))
+Requirement already satisfied: Jinja2==2.9.6 in ./myprojectenv/lib/python2.7/site-packages (from -r requirements.txt (line 5))
+Collecting lxml==3.8.0 (from -r requirements.txt (line 6))
+  Downloading lxml-3.8.0-cp27-cp27mu-manylinux1_x86_64.whl (6.8MB)
+    100% |████████████████████████████████| 6.8MB 122kB/s 
+Requirement already satisfied: MarkupSafe==1.0 in ./myprojectenv/lib/python2.7/site-packages (from -r requirements.txt (line 7))
+Collecting pandas==0.20.2 (from -r requirements.txt (line 8))
+  Downloading pandas-0.20.2-cp27-cp27mu-manylinux1_x86_64.whl (22.4MB)
+    99% |████████████████████████████████| 22.3MB 40.8MB/s eta 0:00:01Exception:
+Traceback (most recent call last):
+  File "/root/myproject/myprojectenv/local/lib/python2.7/site-packages/pip/basecommand.py", line 215, in main
+    status = self.run(options, args)
+  File "/root/myproject/myprojectenv/local/lib/python2.7/site-packages/pip/commands/install.py", line 335, in run
+    wb.build(autobuilding=True)
+  File "/root/myproject/myprojectenv/local/lib/python2.7/site-packages/pip/wheel.py", line 749, in build
+    self.requirement_set.prepare_files(self.finder)
+  File "/root/myproject/myprojectenv/local/lib/python2.7/site-packages/pip/req/req_set.py", line 380, in prepare_files
+    ignore_dependencies=self.ignore_dependencies))
+  File "/root/myproject/myprojectenv/local/lib/python2.7/site-packages/pip/req/req_set.py", line 620, in _prepare_file
+    session=self.session, hashes=hashes)
+  File "/root/myproject/myprojectenv/local/lib/python2.7/site-packages/pip/download.py", line 821, in unpack_url
+    hashes=hashes
+  File "/root/myproject/myprojectenv/local/lib/python2.7/site-packages/pip/download.py", line 659, in unpack_http_url
+    hashes)
+  File "/root/myproject/myprojectenv/local/lib/python2.7/site-packages/pip/download.py", line 882, in _download_http_url
+    _download_url(resp, link, content_file, hashes)
+  File "/root/myproject/myprojectenv/local/lib/python2.7/site-packages/pip/download.py", line 603, in _download_url
+    hashes.check_against_chunks(downloaded_chunks)
+  File "/root/myproject/myprojectenv/local/lib/python2.7/site-packages/pip/utils/hashes.py", line 46, in check_against_chunks
+    for chunk in chunks:
+  File "/root/myproject/myprojectenv/local/lib/python2.7/site-packages/pip/download.py", line 571, in written_chunks
+    for chunk in chunks:
+  File "/root/myproject/myprojectenv/local/lib/python2.7/site-packages/pip/utils/ui.py", line 139, in iter
+    for x in it:
+  File "/root/myproject/myprojectenv/local/lib/python2.7/site-packages/pip/download.py", line 560, in resp_read
+    decode_content=False):
+  File "/root/myproject/myprojectenv/local/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/response.py", line 357, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "/root/myproject/myprojectenv/local/lib/python2.7/site-packages/pip/_vendor/requests/packages/urllib3/response.py", line 314, in read
+    data = self._fp.read(amt)
+  File "/root/myproject/myprojectenv/local/lib/python2.7/site-packages/pip/_vendor/cachecontrol/filewrapper.py", line 63, in read
+    self._close()
+  File "/root/myproject/myprojectenv/local/lib/python2.7/site-packages/pip/_vendor/cachecontrol/filewrapper.py", line 50, in _close
+    self.__callback(self.__buf.getvalue())
+  File "/root/myproject/myprojectenv/local/lib/python2.7/site-packages/pip/_vendor/cachecontrol/controller.py", line 275, in cache_response
+    self.serializer.dumps(request, response, body=body),
+  File "/root/myproject/myprojectenv/local/lib/python2.7/site-packages/pip/_vendor/cachecontrol/serialize.py", line 87, in dumps
+    ).encode("utf8"),
+MemoryError
+(myprojectenv) root@MarketWatch:~/myproject# ls

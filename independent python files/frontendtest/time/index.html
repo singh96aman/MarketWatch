@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body onload="myFunction()">
+
+<h1>My First Web Page</h1>
+<p>My First Paragraph</p>
+
+<p id="demo" ></p>
+
+<script>
+
+    function myFunction() {
+
+        var now = new Date();
+        var x = document.getElementById('demo');
+
+        if (now.getHours() <= 9) {
+            x.style.display = 'block';
+        }
+        else {
+            x.style.display = 'none';
+        }
+        document.getElementById("demo").innerHTML = now.getHours();
+    }
+</script>
+
+</body>
+</html>

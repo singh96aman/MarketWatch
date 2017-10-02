@@ -1,0 +1,14 @@
+Flask==0.12.2
+Flask-MySQL==1.4.0
+idna==2.6
+itsdangerous==0.24
+Jinja2==2.9.6
+lxml==3.8.0
+MarkupSafe==1.0
+pandas==0.20.2
+PyMySQL==0.7.11
+pytz==2017.2
+requests==2.18.4
+simplejson==3.11.1
+urllib3==1.22
+Werkzeug==0.12.2

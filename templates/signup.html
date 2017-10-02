@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    	<meta charset="UTF-8">
+	<title>Sign Up</title>
+
+    <meta name="description" content="Kite Coming Soon HTML Template by Jewel Theme" >
+	<meta name="author" content="Jewel Theme">
+
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+
+	<!-- Bootstrap  -->
+ <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}">
+
+	<!-- icon fonts font Awesome -->
+ <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/font-awesome.min.css') }}">
+
+	<!-- Custom Styles -->
+ <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/style.css') }}">
+
+	<!--[if lt IE 9]>
+ <script src="{{url_for('static', filename='assets/js/html5shiv.js')}}"></script>
+	<![endif]-->
+
+    <style>
+       @import url(http://fonts.googleapis.com/css?family=Montserrat:400);
+body {
+  text-align: center;
+}
+
+.flipper-container {
+  text-align: center;
+  margin-top: 40px;
+  -moz-perspective: 1000;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+}
+
+.flipper {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  font-family: 'Montserrat', arial, sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  width: 16em;
+  height: 4.5em;
+  background-color: #282828;
+  box-shadow: 0 3px 5px #282828;
+  -moz-transition: all 0.6s cubic-bezier(0.37, 0.74, 0.15, 1.65);
+  -o-transition: all 0.6s cubic-bezier(0.37, 0.74, 0.15, 1.65);
+  -webkit-transition: all 0.6s cubic-bezier(0.37, 0.74, 0.15, 1.65);
+  transition: all 0.6s cubic-bezier(0.37, 0.74, 0.15, 1.65);
+  -moz-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.flipper:target {
+  -moz-transform: rotateX(90deg);
+  -webkit-transform: rotateX(90deg);
+  transform: rotateX(90deg);
+}
+
+.front-face,
+.back-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  padding-right: 70px;
+  letter-spacing: 2px;
+  line-height: 4.5em;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.front-face:before,
+.back-face:before {
+  content: attr(data-icon);
+  font-size: 30px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 70px;
+  border-radius: 0 2px 2px 0;
+}
+
+.front-face {
+  background-color: #fc2161;
+  color: #fff;
+  text-shadow: 0 1px 1px #b50236;
+  -moz-transform: rotateX(0deg) translateZ(2.25em);
+  -ms-transform: rotateX(0deg) translateZ(2.25em);
+  -webkit-transform: rotateX(0deg) translateZ(2.25em);
+  transform: rotateX(0deg) translateZ(2.25em);
+}
+.front-face:before {
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjEuMCIgeDI9IjEuMCIgeTI9IjAuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2NlMDMzZSIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjZWIxZjU2Ii8+PHN0b3Agb2Zmc2V0PSI1MCUiIHN0b3AtY29sb3I9IiNmOTE4NTgiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmYzIxNjEiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');
+  background-size: 100%;
+  background-image: -moz-linear-gradient(45deg, #ce033e 0%, #eb1f56 50%, #f91858 50%, #fc2161);
+  background-image: -webkit-linear-gradient(45deg, #ce033e 0%, #eb1f56 50%, #f91858 50%, #fc2161);
+  background-image: linear-gradient(45deg, #ce033e 0%, #eb1f56 50%, #f91858 50%, #fc2161);
+}
+
+.back-face {
+  background-color: #77BD42;
+  color: #53842e;
+  -moz-transform: rotateX(-90deg) translateZ(2.25em);
+  -ms-transform: rotateX(-90deg) translateZ(2.25em);
+  -webkit-transform: rotateX(-90deg) translateZ(2.25em);
+  transform: rotateX(-90deg) translateZ(2.25em);
+}
+.back-face:before {
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjEuMCIgeDI9IjEuMCIgeTI9IjAuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzUzODQyZSIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjNzZiYzQyIi8+PHN0b3Agb2Zmc2V0PSI1MCUiIHN0b3AtY29sb3I9IiM3ZGJkNGMiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM3N2JkNDIiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');
+  background-size: 100%;
+  background-image: -moz-linear-gradient(45deg, #53842e 0%, #76bc42 50%, #7dbd4c 50%, #77bd42);
+  background-image: -webkit-linear-gradient(45deg, #53842e 0%, #76bc42 50%, #7dbd4c 50%, #77bd42);
+  background-image: linear-gradient(45deg, #53842e 0%, #76bc42 50%, #7dbd4c 50%, #77bd42);
+}
+
+    </style>
+
+</head>
+<body>
+<div>
+<form action="" method="POST">
+<!-- Page Top Sec -->
+	<section id="page-top" class="section-style" data-background-image="{{url_for('static', filename='images/background/page-signup.jpg')}}">
+		<div class="pattern height-resize">
+			<div class="container">
+			    <center><img src="{{ url_for('static', filename='images/Bizz1.png')}}" style="height: 275px ; width: 275px; align-content: center"></center>
+				<h2 class="section-title">
+					Registration
+				</h2><!-- /.Section-title  -->
+				<div id="time_countdown" class="time-count-container">
+					<div class="subscribe-hide">
+                        <form class="form-signin">
+                        <label for="text" class="sr-only">Choose A User Name</label>
+                        <input type="text" name="signupusername" id="user" class="form-control" placeholder="Enter Username" required autofocus name="username">
+                        <br>
+                        <br>
+						<label for="inputPassword" class="sr-only">Choose A Password</label>
+                        <input type="password" id="pass" name="signuppassword" class="form-control" placeholder="Enter Password" required name="password">
+                        <br>
+						<span id="subscribe-loading" class="btn"> <i class="fa fa-refresh fa-spin"></i> </span>
+						<div class="subscribe-error"></div>
+                            </form>
+					</div><!-- /.subscribe-hide -->
+					<div class="subscribe-message"></div>
+                    <br>
+                    <p>{{ error }}</p>
+                    <br>
+                     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+				</div><!-- /.time-count-container -->
+			</div><!-- /.container -->
+		</div><!-- /.pattern -->
+	</section><!-- /#page-top -->
+	<!-- Page Top Section  End -->
+
+	<!-- jQuery Library -->
+ <script src="{{url_for('static', filename='assets/js/jquery-2.1.0.min.js')}}"></script>
+	<!-- Modernizr js -->
+ <script src="{{url_for('static', filename='assets/js/modernizr-2.8.0.min.js')}}"></script>
+	<!-- Plugins -->
+ <script src="{{url_for('static', filename='assets/js/modernizr-2.8.0.min.js')}}"></script>
+	<!-- Custom JavaScript Functions -->
+ <script src="{{url_for('static', filename='assets/js/functions.js')}}"></script>
+	<!-- Custom JavaScript Functions -->
+ <script src="{{url_for('static', filename='assets/js/jquery.ajaxchimp.min.js')}}"></script>
+ <!--Plugins 2 -->
+ <script src="{{ url_for('static', filename='assets/js/plugins.js')}}"></script>
+         </form>
+    </div>
+</body>
+</html>

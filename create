@@ -1,0 +1,76 @@
+create table user(
+id int(6) auto_increment not null primary key,
+username varchar(40),
+password varchar(40),
+stock varchar(160),
+purse numeric(6) default 10000
+);
+
+insert into user(username,password,stock,purse) values ("admin","password","0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+",20000);
+
+insert into user(username,password,companies,stock,purse) values ("admin","password","AAPL,YHOO","10,20",20000);
+
+insert into user(username,password,companies,stock,purse) values ("admin2","password2","ACC","30",20000);
+
+select companies from user where username="admin";
+
+update user set stock = "15,30" where username = "admin";
+
+update user set purse = 15000 where username = "admin";
+
+create table stock(
+index varchar(40),
+price varchar(40)
+);
+
+create table stock(
+name varchar(40),
+stock varchar(40)
+);
+
+insert into stock values ("0","0");
+insert into stock values ("1","0");
+insert into stock values ("2","0");
+insert into stock values ("3","0");
+insert into stock values ("4","0");
+insert into stock values ("5","0");
+insert into stock values ("6","0");
+insert into stock values ("7","0");
+insert into stock values ("8","0");
+insert into stock values ("9","0");
+insert into stock values ("10","0");
+insert into stock values ("11","0");
+insert into stock values ("12","0");
+insert into stock values ("13","0");
+insert into stock values ("14","0");
+insert into stock values ("15","0");
+insert into stock values ("16","0");
+insert into stock values ("17","0");
+insert into stock values ("18","0");
+insert into stock values ("19","0");
+insert into stock values ("20","0");
+insert into stock values ("21","0");
+insert into stock values ("22","0");
+insert into stock values ("23","0");
+insert into stock values ("24","0");
+insert into stock values ("25","0");
+insert into stock values ("26","0");
+insert into stock values ("27","0");
+insert into stock values ("28","0");
+insert into stock values ("29","0");
+insert into stock values ("30","0");
+insert into stock values ("31","0");
+insert into stock values ("32","0");
+
+
+
+
+
+
+
+update stock set stock = "0" where name = "";
+
+ alter table user add playervalue varchar(40);
+
+ update user set purse = "20" where username = "admin";

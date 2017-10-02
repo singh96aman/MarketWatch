@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% for item in companystock %}
+    <title>{{ item.name }}</title>
+     {% endfor %}
+    <meta name="description" content="Kite Coming Soon HTML Template by Jewel Theme" >
+	<meta name="author" content="Jewel Theme">
+
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+
+	<!-- Bootstrap  -->
+ <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}">
+
+	<!-- icon fonts font Awesome -->
+ <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/font-awesome.min.css') }}">
+
+	<!-- Custom Styles -->
+ <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/style.css') }}">
+
+ <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/cover.css') }}">
+
+	<!--[if lt IE 9]>
+ <script src="{{url_for('static', filename='assets/js/html5shiv.js')}}"></script>
+	<![endif]-->
+    <script>
+        function validateForm() {
+    var x = document.forms["myForm"]["stockbuy"].value;
+    var y = document.forms["myForm"]["stocksell"].value;
+    if (x == "" && y == "") {
+        alert("Both entries cannot be empty!");
+        return false;
+    }
+}
+    </script>
+
+    <script>
+        function closeMarket() {
+            var now = new Date();
+        var x = document.getElementById('stocktrade');
+        var y = document.getElementById('stocktradeclose');
+
+        if (now.getHours() <= 10 || now.getHours() >= 21) {
+            x.style.display = 'block';
+            y.style.display = 'none';
+        }
+        else {
+            x.style.display = 'none';
+            y.style.display = 'block';
+        }
+        }
+    </script>
+
+</head>
+<body onload="closeMarket()" style="overflow: auto">
+<!-- Page Top Sec -->
+	<section id="page-top" class="section-stylse" data-background-image="{{url_for('static', filename='images/background/page-signup.jpg')}}">
+		<div class="pattern height-resize">
+			<div class="container">
+			    <center><img src="{{ url_for('static', filename='images/Bizz1.png')}}" style="height: 275px ; width: 275px; align-content: center"></center>
+				<h2 class="section-title">
+					{% for item in companystock %}
+                        {{item.name}}
+                    {% endfor %}
+				</h2><!-- /.Section-title  -->
+                 <div id="time_countdown" class="time-count-container">
+                    <div style="overflow: auto">
+                        <table class="table">
+                            <thead class="thead-inverse">
+                            <tr>
+                                <th>&nbsp &nbsp Name</th>
+                                <th>1yr Target Est</th>
+                                <th>Current Price</th>
+                                <th>Total Revenue</th>
+                                <th>Stock Symbol</th>
+                                <th>Earning Per Share</th>
+                                <th>Direction Of Stock</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for item in companystock %}
+                            <tr>
+                                <td>{{item.name}}</td>
+                                <td>{{item.targetest}} $</td>
+                                <td>{{item.currentprice}} $</td>
+                                <td>{{item.totalrevenue}} $</td>
+                                <td>{{item.stocksymbol}}</td>
+                                <td>{{item.eps}} $</td>
+                                <td>{% if item.currentprice > item.targetest %}
+                                <img src="/static/images/down.png" align="center" style="max-width: 35px; max-height: 35px; padding-right: 20px"/>
+                                {% endif %}
+                                {% if item.currentprice < item.targetest %}
+                                <img src="/static/images/up.png" align="center" style="max-width: 35px; max-height: 35px; padding-right: 20px"/>
+                                {% endif %}</td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <h4>Current Purse Value  :   <font style="color: red">{{ purse }} $</font></h4>
+                        {% for item in companystock %}
+                            <h4>You own  <font style="color: red">{{ currentstock }}</font> stocks of {{ item.name }}</h4>
+                        {% endfor %}
+                        <div id="stocktrade">
+                        <form name="myForm" action="" method="POST" onsubmit="return validateForm()">
+                            <center>
+                            <div class="subscribe-hide">
+                            <br>
+                            <input class="form-control" type="name" id="stockbuy" name="stockbuy"  style="width: 300px" placeholder="How many Stocks you want To Buy ?">
+						    <br><br>
+                            <input class="form-control" type="name" id="stocksell" name="stocksell" style="width: 300px" placeholder="How many Stocks you want to Sell ?">
+                            <br><br>
+					        </div>
+                            <button type="submit" class="btn btn-success">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Make The Trade&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                            </center>
+                        </form>
+                        <br>
+                        <p><font style="color: red">{{ error }}</font></p>
+                        </div>
+                        <div id="stocktradeclose">
+                            <center>
+                                <h3><b>Stock Market is Closed ! Come back Between 9PM and 11AM.</b> </h3>
+                                <br>
+                                <br>
+                            </center>
+                        </div>
+                        <center>
+                        <div class="subscribe-hide">
+                            {% for item in companystock %}
+                                <a href="{{item.link}}"><font style="color: #f7e1b5">Google link</font></a> &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;   <a href="{{item.url}}"><font style="color: #f7e1b5">Yahoo Link</font></a>
+                                <br>
+                                <br>
+                                <br>
+                                <a href="/NYSE"><font style="color: #00ff80">Go Back To NYSE</font></a>
+                            {% endfor %}
+                        </div>
+                        </center>
+                        <br><br><br>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
