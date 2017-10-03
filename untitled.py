@@ -23,7 +23,7 @@ mysql.init_app(app)
 app = Flask(__name__)
 
 company_symbol = ['AAPL', 'GOOGL', 'MSFT', 'CSCO', 'INTC', 'AMZN', 'VOD', 'QCOM', 'EBAY', 'INFY', 'DVMT', 'FB', 'CBS',
-                  'BBRY', 'AGNC', 'NVDA', 'TXN', 'SBUX', 'NFLX', 'ADBE', 'TSLA', 'CERN', 'EA', 'WDC', 'ADSK', 'ATVI',
+                  'BBRY', 'AGNC', 'NVDA', 'TXN', 'SBUX', 'NFLX', 'ADBE', 'TSLA', 'CERN', 'EA', 'WDC', 'HPQ', 'ATVI',
                   'TMUS', 'MAT', 'FOXA', 'CTSH', 'DISCA', 'PYPL', 'GPRO', 'CTXS']
 
 company_name = ['Apple Inc.', 'Google Inc.', 'Microsoft Corporation', 'Cisco Systems', 'Intel Corporation',
@@ -31,7 +31,7 @@ company_name = ['Apple Inc.', 'Google Inc.', 'Microsoft Corporation', 'Cisco Sys
                 'Dell Inc.', 'Facebook, Inc.', 'CBSAdvisor, Inc.', 'BlackBerry Limited', 'American Capital Agency',
                 'NVIDIA Corporation', 'Texas Instruments Incorporated', 'Starbucks Corporation', 'Netflix, Inc.',
                 'Adobe Systems Incorporated', 'Tesla, Inc.', 'Marriott International', 'Electronic Arts Inc.',
-                'Western Digital Corporation', 'Autodesk, Inc.', 'Activision Blizzard Inc.', 'T-Mobile US',
+                'Western Digital Corporation', 'Hewlett-Packard Co.', 'Activision Blizzard Inc.', 'T-Mobile US',
                 'Mattel Inc', '21st Century Fox Class A', 'Cognizant Technology', 'Discovery Communications Inc.',
                 'Paypal Holdings Inc', 'GoPro, Inc.', 'Citrix Systems, Inc.']
 
@@ -59,7 +59,7 @@ google_links = ['https://www.google.com/finance?q=NASDAQ%3AAAPL&ei=LKiZWejREcOvu
                 'https://www.google.com/finance?q=NASDAQ%3ACERN&ei=kKqZWcDqG4i6uQSOvrqYDA',
                 'https://www.google.com/finance?q=NASDAQ%3AEA&ei=o6qZWbjeEt2-uwSkyKB4',
                 'https://www.google.com/finance?q=NASDAQ%3AWDC&ei=uqqZWfGYMYrBugSfhozIDg',
-                'https://www.google.com/finance?q=NASDAQ%3AADSK&ei=1qqZWbjnD467ugS8vYeQBw',
+                'https://finance.google.com/finance?q=NYSE:HPQ',
                 'https://www.google.com/finance?q=NASDAQ%3AATVI&ei=66qZWdiAEsejugTW54WoCg',
                 'https://www.google.com/finance?q=NASDAQ%3ATMUS&ei=C6uZWZCPFYbOuATGs5DQDA',
                 'https://www.google.com/finance?q=NASDAQ%3AMAT&ei=HKuZWYnoFJKQuQS13q-QAw',
@@ -684,9 +684,9 @@ def WDC():
     print  companystock
     return render_template('company.html', companystock=companystock , purse=purse, currentstock=currentstock,error=error)
 
-@app.route('/ADSK', methods=['GET', 'POST'])
+@app.route('/HPQ', methods=['GET', 'POST'])
 def ADSK():
-    companystock,stock,purse,currentstock = getStock2('ADSK')
+    companystock,stock,purse,currentstock = getStock2('HPQ')
     error = ""
     if request.method == 'POST':
         error=makechanges('ADSK',stock)
