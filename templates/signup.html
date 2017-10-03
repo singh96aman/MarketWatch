@@ -142,13 +142,30 @@ body {
 				<div id="time_countdown" class="time-count-container">
 					<div class="subscribe-hide">
                         <form class="form-signin">
-                        <label for="text" class="sr-only">Choose A User Name</label>
+                        <label for="text" class="sr-only">Enter Your Name</label>
+                        <input type="text" name="signupname" id="name" class="form-control" placeholder="Enter Name" required autofocus name="name">
+                        <br>
+                        <br>
+						<label for="text" class="sr-only">Enter Your Registeration</label>
+                        <input type="text" id="reg" name="signupreg" class="form-control" pattern= "[0-9]{9}" placeholder="Enter Registeration" required name="reg">
+                        <br>
+                        <br>
+						<label for="text" class="sr-only">Enter Your College</label>
+                        <input type="text" id="col" name="signupcol" class="form-control" placeholder="Enter College" required name="col">
+                        <br>
+                        <br>
+						<label for="text" class="sr-only">Enter Your Mobile No</label>
+                        <input type="text" id="mob" name="signupmob" class="form-control" pattern= "[0-9]{10}" placeholder="Enter Mobile No" required name="mob">
+                        <br>
+                        <br>
+						<label for="text" class="sr-only">Choose A Username</label>
                         <input type="text" name="signupusername" id="user" class="form-control" placeholder="Enter Username" required autofocus name="username">
                         <br>
                         <br>
 						<label for="inputPassword" class="sr-only">Choose A Password</label>
                         <input type="password" id="pass" name="signuppassword" class="form-control" placeholder="Enter Password" required name="password">
                         <br>
+                        <h3><font color="#7fffd4">Please don't forget your password</font></h3>
 						<span id="subscribe-loading" class="btn"> <i class="fa fa-refresh fa-spin"></i> </span>
 						<div class="subscribe-error"></div>
                             </form>
@@ -158,6 +175,11 @@ body {
                     <p>{{ error }}</p>
                     <br>
                      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+                     <br>
+                     <br> <br> <br>
+                     <br>
+
+
 				</div><!-- /.time-count-container -->
 			</div><!-- /.container -->
 		</div><!-- /.pattern -->

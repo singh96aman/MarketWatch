@@ -1,10 +1,18 @@
 create table user(
 id int(6) auto_increment not null primary key,
+name varchar(40),
+regno varchar(40),
+college varchar(40),
+mobileno varchar(40),
 username varchar(40),
 password varchar(40),
 stock varchar(160),
-purse numeric(6) default 10000
+purse numeric(6),
+playervalue numeric(7)
 );
+
+insert into user(name,username,password,stock,purse) values ("admin","password","0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+",20000);
 
 insert into user(username,password,stock,purse) values ("admin","password","0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 ",20000);
@@ -12,7 +20,7 @@ insert into user(username,password,stock,purse) values ("admin","password","0,0,
 insert into user(username,password,companies,stock,purse) values ("admin","password","AAPL,YHOO","10,20",20000);
 
 insert into user(username,password,companies,stock,purse) values ("admin2","password2","ACC","30",20000);
-
+ dd
 select companies from user where username="admin";
 
 update user set stock = "15,30" where username = "admin";
@@ -63,14 +71,10 @@ insert into stock values ("30","0");
 insert into stock values ("31","0");
 insert into stock values ("32","0");
 
-
-
-
-
-
-
 update stock set stock = "0" where name = "";
 
  alter table user add playervalue varchar(40);
 
  update user set purse = "20" where username = "admin";
+
+ insert into user(name,regno,college,mobileno,username,password,stock,purse,playervalue) values ("vdf","123456789","1234567898","sdn","ghy","123","0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",100000,150198);

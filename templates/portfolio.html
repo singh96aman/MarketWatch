@@ -25,14 +25,26 @@
 	<!--[if lt IE 9]>
  <script src="{{url_for('static', filename='assets/js/html5shiv.js')}}"></script>
 	<![endif]-->
-    <script>
-    function Login(){
-       sessionStorage.clear();
-       Session.clear();
-    }
- </script>
 </head>
 <body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header" style="padding: 10px 10px 10px 10px">
+            <a class="active navbar-brand"><font color="white">Portfolio</font></a>
+    </div>
+       <div class="navbar-header" style="padding: 10px 10px 10px 10px">
+           <a class="navbar-brand" href="/NYSE">NYSE</a>
+    </div>
+    <div class="navbar-header" style="padding: 10px 10px 10px 10px">
+      <a class="navbar-brand" href="/leaderboard">Leaderboard</a>
+    </div>
+  <ul class="nav navbar-nav navbar-right">
+      <div class="navbar-header" style="padding: 10px 10px 10px 10px">
+      <a class="navbar-brand" href="/login"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Login</a>
+    </div>
+      </ul>
+  </div>
+</nav>
 <!-- Page Top Sec -->
 	<section id="page-top" class="section-style" data-background-image="{{url_for('static', filename='images/background/page-signup.jpg')}}">
 		<div class="pattern height-resize">
@@ -48,7 +60,8 @@
                             <thead class="thead-inverse">
                             <tr>
                             <th><center><h4><b>Name</b></h4></center></th>
-                            <th><center><h4><b>Purse</b></h4></center></th>
+                            <th><center><h4><b>&nbsp; &nbsp;&nbsp; &nbsp;Purse</b></h4></center></th>
+                            <th><center><h4><b>Current Player Worth</b></h4></center></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -56,22 +69,14 @@
                                 <tr>
                                 <td><center>{{item.username}}</center></td>
                                 <td><center>{{item.purse}} $</center></td>
+                                <td><center>{{item.playervalue}} $</center></td>
                                 </tr>
                             {% endfor %}
                             </tbody>
                         </table>
                         </center>
-                        <center>
                         <div class="subscribe-hide">
-                            <br>
-                            <br>
-                            <div><a href="leaderboard"><button type="submit" class="btn btn-success" style="text-decoration: none;padding: 5px 65px 5px 65px"><h4>Leaderboard</h4></button></a></div>
-                            <br>
-                            <br>
-                            <div><a href="NYSE" style="text-decoration: none"><button type="submit" class="btn btn-danger"><h4>New York Stock Exchange</h4></button></a></div>
-                         </div>
-                        </center>
-                         <br><br><br><br><br>
+                        <br><br>
                         <div>
                             {% if not currentownership %}
                                 <h4><b>You Don't Own Any Stocks !</b></h4>
@@ -90,15 +95,13 @@
                                         {% for item in currentownership %}
                                         <tr>
                                         <td><a href="/{{ item.symbol }}">{{item.name}}</a></td>
-                                        <td>{{item.stock}} $</td>
+                                        <td>{{item.stock}}</td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
                                 </table>
-                            <br><br><br>
+                            <br>
                         </div>
-                     <a href="/" onclick="Login()"><font style="color: #00ff80">Go Back to Login</font></a>
-                    <br>
                     <br>
                     </div>
                  </div>

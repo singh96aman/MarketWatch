@@ -43,7 +43,7 @@
         var x = document.getElementById('stocktrade');
         var y = document.getElementById('stocktradeclose');
 
-        if (now.getHours() <= 10 || now.getHours() >= 21) {
+        if (now.getHours() <= 1 || now.getHours() >= 21) {
             x.style.display = 'block';
             y.style.display = 'none';
         }
@@ -53,10 +53,32 @@
         }
         }
     </script>
-
 </head>
 <body onload="closeMarket()" style="overflow: auto">
 <!-- Page Top Sec -->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header" style="padding: 10px 10px 10px 10px">
+        {% for item in companystock %}
+            <a class="active navbar-brand"><font color="white">{{ item.name }}</font></a>
+        {% endfor %}
+    </div>
+       <div class="navbar-header" style="padding: 10px 10px 10px 10px">
+           <a class="navbar-brand" href="/leaderboard">Leaderboard</a>
+    </div>
+       <div class="navbar-header" style="padding: 10px 10px 10px 10px">
+      <a class="navbar-brand" href="/NYSE">NYSE</a>
+    </div>
+    <div class="navbar-header" style="padding: 10px 10px 10px 10px">
+      <a class="navbar-brand" href="/">Portfolio</a>
+    </div>
+  <ul class="nav navbar-nav navbar-right">
+      <div class="navbar-header" style="padding: 10px 10px 10px 10px">
+      <a class="navbar-brand" href="/login"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Login</a>
+    </div>
+      </ul>
+  </div>
+</nav>
 	<section id="page-top" class="section-stylse" data-background-image="{{url_for('static', filename='images/background/page-signup.jpg')}}">
 		<div class="pattern height-resize">
 			<div class="container">
@@ -121,7 +143,7 @@
                         </div>
                         <div id="stocktradeclose">
                             <center>
-                                <h3><b>Stock Market is Closed ! Come back Between 9PM and 11AM.</b> </h3>
+                                <h3><b>Stock Market is Closed ! Come back Between 9PM and 1AM.</b> </h3>
                                 <br>
                                 <br>
                             </center>
@@ -131,9 +153,6 @@
                             {% for item in companystock %}
                                 <a href="{{item.link}}"><font style="color: #f7e1b5">Google link</font></a> &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;   <a href="{{item.url}}"><font style="color: #f7e1b5">Yahoo Link</font></a>
                                 <br>
-                                <br>
-                                <br>
-                                <a href="/NYSE"><font style="color: #00ff80">Go Back To NYSE</font></a>
                             {% endfor %}
                         </div>
                         </center>

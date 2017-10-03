@@ -25,6 +25,7 @@ app = Flask(__name__)
 company_symbol = ['AAPL', 'GOOGL', 'MSFT', 'CSCO', 'INTC', 'AMZN', 'VOD', 'QCOM', 'EBAY', 'INFY', 'DVMT', 'FB', 'CBS',
                   'BBRY', 'AGNC', 'NVDA', 'TXN', 'SBUX', 'NFLX', 'ADBE', 'TSLA', 'CERN', 'EA', 'WDC', 'ADSK', 'ATVI',
                   'TMUS', 'MAT', 'FOXA', 'CTSH', 'DISCA', 'PYPL', 'GPRO', 'CTXS']
+
 company_name = ['Apple Inc.', 'Google Inc.', 'Microsoft Corporation', 'Cisco Systems', 'Intel Corporation',
                 'Amazon.com Inc', 'Vodafone Group Plc', 'Qualcomm, Inc.', 'eBay Inc.', 'Infosys Technologies Limited',
                 'Dell Inc.', 'Facebook, Inc.', 'CBSAdvisor, Inc.', 'BlackBerry Limited', 'American Capital Agency',
@@ -77,38 +78,20 @@ def load_portfolio():
     cur.execute("SELECT * FROM user WHERE username = %s", username)
     userdetails = [dict(
         id=row[0],
-        username=row[1],
-        password=row[2],
-        stock=row[3],
-        purse=row[4]
+        username=row[5],
+        password=row[6],
+        stock=row[7],
+        purse=row[8],
+        playervalue=row[9]
     ) for row in cur.fetchall()]
     return userdetails
 
-@app.route('/', methods=['GET', 'POST'])
-def hello_world():
-    print "index"
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    print "login"
     error = ""
 
-    '''
-    if 'username' in session:
-        username_form = session['username']
-        print "username is "+username_form
-        conn = mysql.connect()
-        cur = conn.cursor()
-        cur.execute("SELECT * FROM user WHERE username = %s", [username_form])
-        userdetails = [dict(
-            id=row[0],
-            username=row[1],
-            password=row[2],
-            stock=row[3],
-            purse=row[4]
-        ) for row in cur.fetchall()]
-        currentownership = getcurrentstock()
-        return render_template('portfolio.html', userdetails=userdetails, currentownership=currentownership)
-    '''
-
     if request.method == 'POST':
-        session['username'] = request.form['username']
         username_form = request.form['username']
         password_form = request.form['password']
         conn = mysql.connect()
@@ -121,11 +104,66 @@ def hello_world():
                     cur.execute("SELECT * FROM user WHERE username = %s", [username_form])
                     userdetails = [dict(
                         id=row[0],
-                        username=row[1],
-                        password=row[2],
-                        stock=row[3],
-                        purse=row[4]
+                        username=row[5],
+                        password=row[6],
+                        stock=row[7],
+                        purse=row[8],
+                        playervalue=row[9]
                     ) for row in cur.fetchall()]
+                    session['username'] = request.form['username']
+                    currentownership = getcurrentstock()
+                    print session['username']
+                    print userdetails,currentownership
+                    return render_template('portfolio.html', userdetails=userdetails, currentownership=currentownership)
+                else:
+                    error = "Invalid credential"
+        else:
+            error = "Invalid Credential"
+        conn.commit()
+    return render_template('index.html', error=error)
+
+@app.route('/', methods=['GET', 'POST'])
+def hello_world():
+    print "index"
+    error = ""
+
+    if 'username' in session:
+        username_form = session['username']
+        print "username is "+username_form
+        conn = mysql.connect()
+        cur = conn.cursor()
+        cur.execute("SELECT * FROM user WHERE username = %s", [username_form])
+        userdetails = [dict(
+            id=row[0],
+            username=row[5],
+            password=row[6],
+            stock=row[7],
+            purse=row[8],
+            playervalue=row[9]
+        ) for row in cur.fetchall()]
+        currentownership = getcurrentstock()
+        return render_template('portfolio.html', userdetails=userdetails, currentownership=currentownership)
+
+    if request.method == 'POST':
+        username_form = request.form['username']
+        password_form = request.form['password']
+        conn = mysql.connect()
+        cur = conn.cursor()
+        cur.execute("SELECT COUNT(1) FROM user WHERE username = %s;", [username_form])  # CHECKS IF USERNAME EXSIST
+        if cur.fetchone()[0]:
+            cur.execute("SELECT password FROM user WHERE username = %s;", [username_form])
+            for row in cur.fetchall():
+                if password_form == row[0]:
+                    cur.execute("SELECT * FROM user WHERE username = %s", [username_form])
+                    userdetails = [dict(
+                        id=row[0],
+                        username=row[5],
+                        password=row[6],
+                        stock=row[7],
+                        purse=row[8],
+                        playervalue=row[9]
+                    ) for row in cur.fetchall()]
+                    session['username'] = request.form['username']
                     currentownership = getcurrentstock()
                     return render_template('portfolio.html', userdetails=userdetails, currentownership=currentownership)
                 else:
@@ -140,11 +178,11 @@ def getcurrentstock():
     cur = conn.cursor()
     if 'username' in session:
         username = session['username']
-    #print session
+    print "username is "+username
     cur.execute("SELECT * FROM user WHERE username = %s", [username])
     for row in cur.fetchall():
         print row
-        newarray = row[3].split(',')
+        newarray = row[7].split(',')
         stocks = []
         j = 0
         k=0
@@ -160,6 +198,7 @@ def getcurrentstock():
             name=company_name[row[1]],
             symbol=company_symbol[row[1]]
         ) for row in stocks]
+        updateleaderboard()
         return currentownership
 
 
@@ -172,8 +211,11 @@ def sign_up():
     if request.method == 'POST':
         print "sign up post"
         Signupuser = request.form['signupusername']
-        session['username'] = request.form['signupusername']
         Signuppass = request.form['signuppassword']
+        Signupname = request.form['signupname']
+        Signupreg = request.form['signupreg']
+        Signupmob = request.form['signupmob']
+        Signupcol = request.form['signupcol']
         conn = mysql.connect()
         cur = conn.cursor()
         cur.execute("SELECT COUNT(1) FROM user WHERE username = %s;", [Signupuser])  # CHECKS IF USERNAME EXSIST
@@ -185,7 +227,8 @@ def sign_up():
              #   for lol in row:
              #       if Signuppass == lol:
 
-        temp = "insert into user(username,password,stock,purse) values (\""+Signupuser+"\",\""+Signuppass+"\",\"0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\",100000);"
+        temp = "insert into user(name,regno,college,mobileno,username,password,stock,purse,playervalue) values (\""+Signupname+"\",\""+Signupreg+"\",\""+Signupmob+"\",\""+Signupcol+"\",\""+Signupuser+"\",\""+Signuppass+"\",\"0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\",100000,10000);"
+        print temp
         conn = mysql.connect()
         cur = conn.cursor()
         cur.execute(temp)
@@ -193,12 +236,13 @@ def sign_up():
         cur.execute("SELECT * FROM user WHERE username = %s", [Signupuser])
         userdetails = [dict(
             id=row[0],
-            username=row[1],
-            password=row[2],
-            stock=row[3],
-            purse=row[4]
+            username=row[5],
+            password=row[6],
+            stock=row[7],
+            purse=row[8],
+            playervalue=row[9]
         ) for row in cur.fetchall()]
-        username = Signupuser
+        session['username'] = request.form['signupusername']
         currentownership = getcurrentstock()
         if currentownership == "" :
             print "currentownership"
@@ -212,8 +256,40 @@ def NYSE():
     companystock = [dict(
         name = company_name[k],
         symbol = company_symbol[k]
-    ) for k in range(0,34)]
+    ) for k in range(0,33)]
     return render_template('NYSE.html', companystock=companystock)
+
+def updateleaderboard():
+    conn = mysql.connect()
+    cur = conn.cursor()
+    cur.execute("SELECT username FROM user ORDER BY purse DESC")
+    names = []
+    player = []
+
+    for row in cur.fetchall():
+        for i in row:
+            temp = "SELECT stock FROM user WHERE username = \"" + str(i) + "\";"
+            cur.execute("SELECT stock FROM user WHERE username = %s;", [i])
+            print temp
+            for row in cur.fetchall():
+                for lol in row:
+                    userstock = lol.split(',')
+            cur.execute("SELECT stock from stock");
+            userstockprice = []
+            for row in cur.fetchall():
+                for lol in row:
+                    userstockprice.append(lol)
+            playerval = 0
+            cur.execute("SELECT purse FROM user WHERE username = %s;", [i])
+            for row in cur.fetchall():
+                for lol in row:
+                    playerval += float(lol)
+
+            for j in range(0, 33):
+                playerval += float(userstock[j]) * float(userstockprice[j])
+
+            cur.execute("update user set playervalue = \"" + str(playerval) + "\"WHERE username = %s;", [i])
+            conn.commit()
 
 @app.route('/leaderboard', methods=['GET', 'POST'])
 def leaderboard():
@@ -242,7 +318,7 @@ def leaderboard():
                 for lol in row:
                     playerval+=float(lol)
 
-            for j in range(0,34):
+            for j in range(0,33):
                 playerval+=float(userstock[j])*float(userstockprice[j])
 
             cur.execute("update user set playervalue = \""+str(playerval)+"\"WHERE username = %s;", [i])
@@ -259,6 +335,8 @@ def leaderboard():
     for row in cur.fetchall():
         for lol in row:
             names.append(lol)
+
+    print player
 
     userstock = [dict(
         name=names[j],
@@ -747,9 +825,7 @@ def CTXS():
     return render_template('company.html', companystock=companystock , purse=purse, currentstock=currentstock,error=error)
 
 def getStock(name_of_company):
-    global company_symbol,company_name
-    company_symbol = ['AAPL','GOOGL','MSFT','CSCO','INTC','AMZN','VOD','QCOM','EBAY','INFY','DVMT','FB','CBS','BBRY','PBYI','NVDA','TXN','SBUX','NFLX','ADBE','TSLA','CERN','EA','WDC','ADSK','ATVI','TMUS','MAT','FOXA','CTSH','DISCA','PYPL','GPRO','CTXS']
-    company_name = ['Apple Inc.','Google Inc.','Microsoft Corporation','Cisco Systems','Intel Corporation','Amazon.com Inc','Vodafone Group Plc','Qualcomm, Inc.','eBay Inc.','Infosys Technologies Limited','Dell Inc.','Facebook, Inc.','CBSAdvisor, Inc.','BlackBerry Limited','Puma Biotechnology Inc.','NVIDIA Corporation','Texas Instruments Incorporated','Starbucks Corporation','Netflix, Inc.','Adobe Systems Incorporated','Tesla, Inc.','Marriott International','Electronic Arts Inc.','Western Digital Corporation','Autodesk, Inc.','Activision Blizzard Inc.','T-Mobile US','Mattel Inc','21st Century Fox Class A','Cognizant Technology','Discovery Communications Inc.','Paypal Holdings Inc','GoPro, Inc.','Citrix Systems, Inc.']
+    global company_name,company_symbol
     stock = []
     k=0
     stock.append([])
@@ -992,6 +1068,7 @@ def makechanges(name_of_company,company2):
                 j = 0
             else :
                 error = "You don't have enough money !"
+        updateleaderboard()
         return error
 
 def updatestocks():
