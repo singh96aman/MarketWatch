@@ -3,7 +3,7 @@ Flask-MySQL==1.4.0
 idna==2.6
 itsdangerous==0.24
 Jinja2==2.9.6
-lxml==3.8.0
+lxml==4.6.2
 MarkupSafe==1.0
 pandas==0.20.2
 PyMySQL==0.7.11
